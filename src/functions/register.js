@@ -1,5 +1,5 @@
-const mongoose = require('mongoose')
 const User = require('../models/user')
+const errortype = require('../helpers/erros')
 
 function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -11,7 +11,7 @@ async function register_newUser(name, email, password){
 
     try{
         if(!validateEmail(email)){
-            throw new Error("Email invalido");
+            throw new errortype.ErrorInvalidEmail("Email invalido");
         }
 
         let newUser = new User({
@@ -19,29 +19,20 @@ async function register_newUser(name, email, password){
             email:email,
             password:password
         });
-        
 
-        const pr = new Promise((res) =>{
-            newUser.save(err => {
-                if (err) {
-                    if (err.name === 'MongoError' && err.code === 11000) {
-                    // Duplicate username
-                    console.log(`${email} already registered.`);
-                    //return res.status(500).send({ succes: false, message: 'User already exist!' });
-                    }
-        
-                }else {
-                    console.log('New user registered:')
-                    console.log(newUser)
-                }
-                res(err)
-            });
-        })
+        await newUser.save()
 
-        return pr;
     }
     catch(err){
-        console.error(err);
+        if (err) {
+            if (err.name === 'MongoError' && err.code === 11000) {
+                console.log(`${email} already registered.`);
+            }else{
+                console.error(err.message);
+            }
+
+        }
+        
     }
 }
 
