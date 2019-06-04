@@ -48,7 +48,7 @@ export class EsqueciSenha extends Component {
             <Header title="Esqueci minha senha" />
             <div style={style.texto}> Digite o Email para recuperar a senha </div>
             <div style={{ margin: '40px' }}>
-                <Input label="Email" type="email" onChange={e => { this.setState({ email: e.target.value }) }} />
+                <Input label="Email" type="search" onChange={e => { this.setState({ email: e.target.value }) }} />
                 <div style={style.btnContainer}>
                     <Button label="Voltar" path="login" />
                     <Button label="Confirmar" onClick={this.alterarSenha} />
