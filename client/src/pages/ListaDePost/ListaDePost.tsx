@@ -33,12 +33,30 @@ const style: { [id: string]: CSSProperties } = {
     },    
     tag: {
         margin: '4px'
+    },
+    divMakePost: {
+        backgroundColor: 'yellow',
+        height: '10%',
+        margin: '8px',
+        borderRadius: '8px',
+        display: 'flex',
+        justifyContent: 'space-around'
+    },
+    divBotaoConfirmar: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginRight: '10px'
+
     }
 }
 
 export class ListaDePost extends Component {
     state={
         tags: ["Festas", "Provas", "Grupos de estudos", "Shows", "Palestras", "Estagios", "Monitoria", "Esportes"]
+    }
+    confirmarPost = (): void => {
+        alert('Post Enviado')
     }
     render() {
         return <div style={style.container}>
@@ -48,7 +66,14 @@ export class ListaDePost extends Component {
                     {this.state.tags.map(t=> <Chip  label={t} clickable style={style.tag}/>)}
                 </div>
             </div>            
-            <div style={style.divDir}></div>
+            <div style={style.divDir}>
+                <div style={style.divMakePost}>
+                    <Input label="Crie um post" type="text"></Input>
+                    <div style={style.divBotaoConfirmar}>
+                        <Button label="Confirmar" onClick={this.confirmarPost} />
+                    </div>                  
+                </div>
+            </div>
         </div>
     }
 }

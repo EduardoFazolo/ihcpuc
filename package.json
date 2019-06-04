@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/EduardoFazolo/ihcpuc#readme",
   "dependencies": {
+    "@material-ui/core": "^4.0.2",
     "generate-password": "^1.4.1",
     "mongodb": "^3.2.5",
     "mongoose": "^5.5.10",
