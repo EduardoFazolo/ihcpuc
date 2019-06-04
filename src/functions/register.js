@@ -20,7 +20,7 @@ async function register_newUser(name, email, password){
             password:password
         });
 
-        await newUser.save()
+        await newUser.save();
 
     }
     catch(err){

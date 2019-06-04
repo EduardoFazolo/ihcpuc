@@ -16,3 +16,15 @@ module.exports.ErrorNotRegistered = class ErrorNotRegistered extends Error{
         this.id = -502;
     }
 }
+module.exports.InvalidPassword = class InvalidPassword extends Error{
+    constructor(message){
+        super(message);
+        this.id = -503;
+    }
+}
+module.exports.InvalidPassConfirmation = class InvalidPassConfirmation extends Error{
+    constructor(message){
+        super(message);
+        this.id = -504;
+    }
+}
