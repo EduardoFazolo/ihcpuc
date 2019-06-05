@@ -20,7 +20,7 @@ const style: { [id: string]: CSSProperties } = {
         backgroundSize: 'cover',
     },
 }
-export class Home extends Component {
+export class AuthHome extends Component {
     render() {
         return <div style={style.container}>
             <div style={style.content}>
