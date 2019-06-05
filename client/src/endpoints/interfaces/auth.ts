@@ -1,4 +1,4 @@
-export interface Error {
+export interface ServerError {
     id: number
     message: string
 }
@@ -9,7 +9,7 @@ export interface LoginEntrada {
     password: string
 }
 export interface LoginSaida {
-    error?: Error
+    error?: ServerError
     data: {
         name: string
     }
@@ -20,18 +20,18 @@ export interface LogoffEntrada {
     email: string
 }
 export interface LogoffSaida {
-    error?: Error
+    error?: ServerError
 }
 
 //METHOD POST -> /subscribe
-export interface LogoffEntrada {
+export interface SubscribeEntrada {
     name: string
     lastName: string
     email: string
     password: string
 }
-export interface LogoffSaida {
-    error?: Error
+export interface SubscribeSaida {
+    error?: ServerError
 }
 
 //METHOD POST -> /forgotpassword
@@ -39,7 +39,7 @@ export interface ForgotPasswordEntrada {
     email: string
 }
 export interface ForgotPasswordSaida {
-    error?: Error
+    error?: ServerError
 }
 
 //METHOD POST -> /changepassword
@@ -49,5 +49,5 @@ export interface ChangePasswordEntrada {
     newPassword: string
 }
 export interface ChangePasswordSaida {
-    error?: Error
+    error?: ServerError
 }

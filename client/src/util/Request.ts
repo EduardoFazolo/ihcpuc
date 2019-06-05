@@ -1,3 +1,4 @@
+import { ServerError as SV } from '../endpoints/interfaces/auth'
 
 export class Request {
     static get(path: string, data: any): any {
@@ -7,18 +8,11 @@ export class Request {
         return {}
     }
 }
-interface ErrorDTO {
-    mensagem: string
-    id: number
-}
-export interface Response {
-    erro?: ErrorDTO
-}
 export class ServerError extends Error {
     id: number
 
-    constructor(data: ErrorDTO) {
-        super(data.mensagem)
+    constructor(data: SV) {
+        super(data.message)
         this.id = data.id
     }
 }

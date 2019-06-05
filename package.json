@@ -1,26 +1,26 @@
 {
-  "name": "ihcpuc",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/EduardoFazolo/ihcpuc.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/EduardoFazolo/ihcpuc/issues"
-  },
-  "homepage": "https://github.com/EduardoFazolo/ihcpuc#readme",
-  "dependencies": {
-    "@material-ui/core": "^4.0.2",
-    "generate-password": "^1.4.1",
-    "mongodb": "^3.2.5",
-    "mongoose": "^5.5.10",
-    "nodemailer": "^6.2.1"
-  }
+    "name": "ihcpuc",
+    "version": "1.0.0",
+    "description": "",
+    "main": "src/server/main.js",
+    "scripts": {
+        "start": "node src/server/main.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/EduardoFazolo/ihcpuc.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/EduardoFazolo/ihcpuc/issues"
+    },
+    "homepage": "https://github.com/EduardoFazolo/ihcpuc#readme",
+    "dependencies": {
+        "express": "^4.17.1",
+        "generate-password": "^1.4.1",
+        "mongodb": "^3.2.5",
+        "mongoose": "^5.5.10",
+        "nodemailer": "^6.2.1"
+    }
 }

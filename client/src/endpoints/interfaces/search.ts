@@ -1,4 +1,4 @@
-import { Error } from './auth'
+import { ServerError } from './auth'
 
 //METHOD GET -> /searchtags
 /**
@@ -8,7 +8,7 @@ export interface SearchTagsEntrada {
     term: string
 }
 export interface SearchTagsSaida {
-    error?: Error
+    error?: ServerError
     data: {
         tags: string[]
     }

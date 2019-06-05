@@ -1,4 +1,4 @@
-const { app } = require('./serverMain')
+const { app } = require('./main')
 
 app.get('/searchtags', async (request, response) => {
     try {

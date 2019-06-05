@@ -1,4 +1,4 @@
-const { app } = require('./serverMain')
+const { app } = require('./main')
 
 app.post('/createPost', async (request, response) => {
     try {

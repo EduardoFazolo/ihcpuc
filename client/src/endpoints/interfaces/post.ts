@@ -1,4 +1,4 @@
-import { Error } from './auth'
+import { ServerError } from './auth'
 
 //METHOD POST -> /createPost
 export interface CreatePostEntrada {
@@ -7,7 +7,7 @@ export interface CreatePostEntrada {
     content: string
 }
 export interface CreatePostSaida {
-    error?: Error
+    error?: ServerError
 }
 
 //METHOD POST -> /likepost
@@ -15,7 +15,7 @@ export interface LikePostEntrada {
     postId: string
 }
 export interface LikePostSaida {
-    error?: Error
+    error?: ServerError
 }
 
 //METHOD GET -> /getpostsfromtags
@@ -26,7 +26,7 @@ export interface GetPostsFromTagsEntrada {
     tags: string[]
 }
 export interface GetPostsFromTagsSaida {
-    error?: Error
+    error?: ServerError
     data: {
         post: Post[]
     }
