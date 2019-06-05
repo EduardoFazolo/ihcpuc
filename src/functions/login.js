@@ -1,26 +1,22 @@
 const User = require('../models/user')
 const errortype = require('../helpers/erros')
 
-async function login(email, password){
+async function login(_email, password){
 
-    try{
-        const curr_login = await User.findOne({email:email});
+    const curr_login = await User.findOne({email:_email}).exec()
+    console.log(curr_login);
+    if(curr_login){
+        const authenticated = await User.findOne({"email":_email, password:password}).exec();
 
-        if(curr_login){
-            const authenticated = await User.findOne({email:email, password:password});
-
-            if(authenticated){
-                console.log(`${email} has logged in.`);
-                // TODO
-                // logged in stuff 
-            }
-        } else{
-            throw new errortype.ErrorNotRegistered(`${email} not registered.`);
+        if(authenticated){
+            console.log(`${_email} has logged in.`);
+            // TODO
+            // logged in stuff 
+            curr_login.logged = true;
+            await curr_login.save();
         }
-    }catch(err){
-        if(err.id == -502){
-            console.log(err.message)
-        }
+    } else {
+        throw new errortype.ErrorNotRegistered(`${_email} not registered.`);
     }
 
 

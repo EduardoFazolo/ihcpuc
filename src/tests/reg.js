@@ -10,7 +10,10 @@ async function main(){
 
     console.log('\n\n==================================')
     console.log('Test: new login')
-    await register("Smallneck", "smallneck9852@gmail.com", "1234567");
+    await register("Smallneck1", "smallneck1@gmail.com", "1234567");
+    await register("Smallneck2", "smallneck2@gmail.com", "1234567");
+    await register("Smallneck3", "smallneck3@gmail.com", "1234567");
+    await register("Smallneck4", "smallneck4@gmail.com", "1234567");
     console.log('\n\n==================================\n');
 
     await sleep(500)

@@ -17,7 +17,8 @@ async function register_newUser(name, email, password){
         let newUser = new User({
             name:name,
             email:email,
-            password:password
+            password:password,
+            logged:false
         });
 
         await newUser.save();

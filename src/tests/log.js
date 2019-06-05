@@ -10,7 +10,7 @@ async function main(){
 
     console.log('\n\n==================================')
     console.log('Test: Existent login, valid authentication')
-    await login("smallneck@gmail.com", "1234567");
+    await login("smallneck1@gmail.com", "1234567");
     console.log('\n\n==================================\n');
 
     await sleep(500);
