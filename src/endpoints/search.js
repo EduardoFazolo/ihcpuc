@@ -2,7 +2,7 @@ const { app } = require('./serverMain')
 
 app.get('/searchtags', async (request, response) => {
     try {
-        const { term } = request.body
+        const { term } = JSON.parse(request.query.json || '')
 
         // Buscar tags com base no termo passado
 

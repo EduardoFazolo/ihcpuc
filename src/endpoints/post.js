@@ -30,7 +30,7 @@ app.post('/likepost', async (request, response) => {
 
 app.get('/getpostswithtag', async (request, response) => {
     try {
-        const { tags } = request.body
+        const { tags } = JSON.parse(request.query.json || '')
 
         // pegar todos os posts com as tags passadas
 
