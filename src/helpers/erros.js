@@ -1,30 +1,45 @@
-module.exports.ErrorInvalidEmail = class ErrorInvalidEmail extends Error{
-    constructor(message){
-        super(message);
-        this.id = -500;
+class ServerError extends Error {
+    id = 0
+
+    toJSON() {
+        return {
+            id: this.id,
+            message: this.message
+        }
     }
 }
-module.exports.ErrorExistentUser = class ErrorExistentUser extends Error{
-    constructor(message, id){
-        super(message);
-        this.id = -501;
+
+module.exports.ErrorInvalidEmail = class ErrorInvalidEmail extends ServerError {
+    constructor(message) {
+        super(message)
+        this.id = -500
     }
 }
-module.exports.ErrorNotRegistered = class ErrorNotRegistered extends Error{
-    constructor(message){
-        super(message);
-        this.id = -502;
+module.exports.ErrorExistentUser = class ErrorExistentUser extends ServerError {
+    constructor(message, id) {
+        super(message)
+        this.id = -501
     }
 }
-module.exports.InvalidPassword = class InvalidPassword extends Error{
-    constructor(message){
-        super(message);
-        this.id = -503;
+module.exports.ErrorNotRegistered = class ErrorNotRegistered extends ServerError {
+    constructor(message) {
+        super(message)
+        this.id = -502
     }
 }
-module.exports.InvalidPassConfirmation = class InvalidPassConfirmation extends Error{
-    constructor(message){
-        super(message);
-        this.id = -504;
+module.exports.InvalidPassword = class InvalidPassword extends ServerError {
+    constructor(message) {
+        super(message)
+        this.id = -503
     }
+}
+module.exports.InvalidPassConfirmation = class InvalidPassConfirmation extends ServerError {
+    constructor(message) {
+        super(message)
+        this.id = -504
+    }
+}
+
+class MyError extends ServerError {
+    id = -505
 }

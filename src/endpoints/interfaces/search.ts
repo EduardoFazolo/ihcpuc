@@ -4,11 +4,11 @@ import { Error } from './auth'
 /**
  * Buscar tags com base no termo passado
  */
-export interface SearchTagsEntrada{
+export interface SearchTagsEntrada {
     term: string
 }
-export interface SearchTagsSaida{
-    error: Error
+export interface SearchTagsSaida {
+    error?: Error
     data: {
         tags: string[]
     }
