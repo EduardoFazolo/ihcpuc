@@ -4,11 +4,12 @@ import { Post as PostDto } from '../../endpoints/interfaces/post'
 import { ServerError } from '../../util/Request'
 import { LoginRequest } from '../../endpoints/LoginRequest'
 import { PostRequest } from '../../endpoints/PostRequest'
+import { Input } from '../../componentes/Input'
 
 const style: { [id: string]: CSSProperties } = {
     container: {
         width: '90%',
-        backgroundColor: 'white',
+        backgroundColor: 'yellow',
         borderRadius: '10px',
         boxShadow: '0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)',
         margin: '20px 0 20px 0'
@@ -33,7 +34,7 @@ const style: { [id: string]: CSSProperties } = {
         width: '100%',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-around'
+        justifyContent: 'flex-end'
     },
     title: {
         fontWeight: 750,
@@ -41,39 +42,55 @@ const style: { [id: string]: CSSProperties } = {
     }
 }
 
-export class Post extends Component<PostDto> {
-    async darLike() {
+export class EditPost extends Component<PostDto> {
+    state = {
+        title: '',
+        content: ''
+    }
+    enviarPost = async () => {
         try {
-            const { _id } = this.props
-            await PostRequest.likePost(_id)
+            const { title, content } = this.state
+            PostRequest.criarPost(title, content)
         } catch (error) {
             if (error instanceof ServerError) {
                 alert(error.message)
+            } else {
+                alert('Erro inesperado@')
             }
         }
     }
     render() {
-        const { title, content, likesNumber, authorName } = this.props
         return (
             <div style={style.container}>
                 <div style={style.subContainer}>
                     <div style={style.header}>
                         <div>
-                            <div style={style.title}>{title}</div>
-                            <div>{authorName}</div>
+                            <Input
+                                label='Titulo'
+                                onChange={e =>
+                                    this.setState({ title: e.target.value })
+                                }
+                            />
                         </div>
                         <div style={style.bottomBar}>
-                            <div>{likesNumber} likes nesse post</div>
-                            <div style={{ width: '100px' }}>
+                            <div
+                                style={{ width: '100px', marginRight: '25px' }}
+                            >
                                 {' '}
                                 <Button
-                                    label='like'
-                                    onClick={this.darLike}
+                                    label='Enviar'
+                                    onClick={this.enviarPost}
                                 />{' '}
                             </div>
                         </div>
                     </div>
-                    <div style={style.content}>{content}</div>
+                    <Input
+                        label='Novo post'
+                        lines={4}
+                        onChange={e =>
+                            this.setState({ content: e.target.value })
+                        }
+                    />
                 </div>
             </div>
         )

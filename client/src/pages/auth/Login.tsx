@@ -1,5 +1,5 @@
 import React, { Component, CSSProperties } from 'react'
-import { Header } from '../../componentes/Header'
+import { Header } from './Header'
 import { Button } from '../../componentes/Button'
 import { Input } from '../../componentes/Input'
 import { Link, withRouter } from 'react-router-dom'

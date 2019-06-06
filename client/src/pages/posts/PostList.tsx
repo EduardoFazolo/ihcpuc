@@ -1,12 +1,34 @@
 import React, { Component, CSSProperties } from 'react'
-import { Button } from '../../componentes/Button'
-import { Input } from '../../componentes/Input'
 import { Post } from './Post'
 import { Post as PostDto } from '../../endpoints/interfaces/post'
 import { PostRequest } from '../../endpoints/PostRequest'
 import { ServerError } from '../../util/Request'
+import { EditPost } from './EditPost'
 
 const exemploDePosts = [
+    {
+        _id: '0xID',
+        title: 'Post Test 01',
+        content: '#churras Proximo sabado 18/05 #enoix',
+        likesNumber: 5,
+        authorName: 'Scalabresa'
+    },
+    {
+        _id: '0xID',
+        title: 'Post Test 02',
+        content:
+            '#churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix',
+        likesNumber: 15,
+        authorName: 'Scalabresa'
+    },
+    {
+        _id: '0xID',
+        title: 'Post Test 03',
+        content:
+            '#churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix',
+        likesNumber: 15,
+        authorName: 'Scalabresa'
+    },
     {
         _id: '0xID',
         title: 'Post Test 01',
@@ -40,15 +62,13 @@ export function timeout(ms: number) {
 const style: { [id: string]: CSSProperties } = {
     divDir: {
         backgroundColor: '#6F2232',
-        width: 'calc(100% - 350px)',
+        width: '100%',
         height: '100%',
-        borderRadius: '8px',
-        marginLeft: '3px'
+        display: 'flex',
+        flexDirection: 'column'
     },
     divMakePost: {
-        backgroundColor: 'yellow',
-        height: '10%',
-        margin: '8px',
+        flex: 1,
         borderRadius: '8px',
         display: 'flex',
         justifyContent: 'space-around'
@@ -60,12 +80,11 @@ const style: { [id: string]: CSSProperties } = {
         marginRight: '10px'
     },
     postsContainer: {
-        display: 'grid',
-        justifyContent: 'center',
+        flex: 4,
+        display: 'flex',
+        flexDirection: 'column',
         alignItems: 'center',
-        gridTemplateColumns: '95%',
-        gridGap: '30px',
-        padding: '10px'
+        overflowY: 'scroll'
     }
 }
 
@@ -109,14 +128,8 @@ export class PostList extends Component {
         const { posts } = this.state
         return (
             <div style={style.divDir}>
-                <div style={style.divMakePost}>
-                    <Input label='Crie um post' type='text' />
-                    <div style={style.divBotaoConfirmar}>
-                        <Button
-                            label='Confirmar'
-                            onClick={this.confirmarPost}
-                        />
-                    </div>
+                <div className='activeOnHover' style={style.divMakePost}>
+                    <EditPost {...exemploDePosts[0]} />
                 </div>
                 <div style={style.postsContainer}>
                     {posts.length === 0 ? (

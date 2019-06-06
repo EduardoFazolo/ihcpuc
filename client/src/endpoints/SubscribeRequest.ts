@@ -9,7 +9,7 @@ import {
 } from './interfaces/auth'
 
 export class CadastroRequest {
-    static fazerCadastro(
+    static async fazerCadastro(
         name: string,
         lastName: string,
         email: string,
@@ -21,20 +21,24 @@ export class CadastroRequest {
             email,
             password
         }
-        const response: SubscribeSaida = Request.post('/subscribe', data)
+        const response: SubscribeSaida = await Request.post('/subscribe', data)
         if (response.error) throw new ServerError(response.error)
     }
-    static esqueciMinhaSenha(email: string) {
+    static async esqueciMinhaSenha(email: string) {
         const data: ForgotPasswordEntrada = { email }
-        const response: ForgotPasswordSaida = Request.post(
+        const response: ForgotPasswordSaida = await Request.post(
             '/forgotpassword',
             data
         )
         if (response.error) throw new ServerError(response.error)
     }
-    static alterarSenha(email: string, password: string, newPassword: string) {
+    static async alterarSenha(
+        email: string,
+        password: string,
+        newPassword: string
+    ) {
         const data: ChangePasswordEntrada = { email, password, newPassword }
-        const response: ChangePasswordSaida = Request.post(
+        const response: ChangePasswordSaida = await Request.post(
             '/changepassword',
             data
         )

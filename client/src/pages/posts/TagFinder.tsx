@@ -17,20 +17,32 @@ const tagsExemplos = [
 ]
 
 const style: { [id: string]: CSSProperties } = {
-    divEsq: {
-        backgroundColor: '#6F2232',
-        width: '350px',
+    container: {
         height: '100%',
-        borderRadius: '8px'
-    },
-    divTags: {
+        backgroundColor: '#6F2232',
+        width: '400px',
         display: 'flex',
-        flexDirection: 'column',
-        padding: '0 30px 0 30px'
+        alignItems: 'center',
+        justifyContent: 'center'
     },
-    tag: {
-        margin: '4px'
-    }
+    TagFinder: {
+        backgroundColor: 'white',
+        height: 'calc(100% - 35px)',
+        width: 'calc(100% - 35px)',
+        borderRadius: '10px',
+        display: 'flex',
+        alignItems: 'ceter',
+        justifyContent: 'center'
+    },
+    title: {
+        fontSize: '40px',
+        fontWeight: 500
+    },
+    content: {
+        height: 'calc(100% - 30px)',
+        width: 'calc(100% - 30px)'
+    },
+    tag: { margin: '8px' }
 }
 
 export class TagFinder extends Component {
@@ -72,13 +84,14 @@ export class TagFinder extends Component {
     }
     render() {
         return (
-            <div style={style.divEsq}>
-                <Input
-                    label='Pesquisar'
-                    type='search'
-                    onChange={e => this.setState({ term: e.target.value })}
-                />
-                <div style={style.divTags}>{this.renderTags()}</div>
+            <div style={style.container}>
+                <div style={style.TagFinder}>
+                    <div style={style.content}>
+                        <div style={style.title}>Tags:</div>
+                        <Input label='Filtro' />
+                        {this.renderTags()}
+                    </div>
+                </div>
             </div>
         )
     }

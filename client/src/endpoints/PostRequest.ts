@@ -7,21 +7,26 @@ import {
     GetPostsFromTagsEntrada,
     GetPostsFromTagsSaida
 } from './interfaces/post'
+import { LoginLocalData } from './LoginRequest'
 
 export class PostRequest {
-    static criarPost(email: string, title: string, content: string) {
+    static async criarPost(title: string, content: string) {
+        const email = LoginLocalData.email
         let data: CreatePostEntrada = { email, title, content }
-        const response: CreatePostSaida = Request.get('/createPost', data)
+        const response: CreatePostSaida = await Request.post(
+            '/createPost',
+            data
+        )
         if (response.error) throw new ServerError(response.error)
     }
-    static likePost(postId: string) {
+    static async likePost(postId: string) {
         let data: LikePostEntrada = { postId }
-        const response: LikePostSaida = Request.get('/likepost', data)
+        const response: LikePostSaida = await Request.post('/likepost', data)
         if (response.error) throw new ServerError(response.error)
     }
-    static buscarPosts(tags: string[]) {
+    static async buscarPosts(tags: string[]) {
         let data: GetPostsFromTagsEntrada = { tags }
-        const response: GetPostsFromTagsSaida = Request.get(
+        const response: GetPostsFromTagsSaida = await Request.get(
             '/getpostsfromtags',
             data
         )

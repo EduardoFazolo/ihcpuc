@@ -6,14 +6,14 @@ import {
 } from './interfaces/search'
 
 export class SearchRequest {
-    static buscarTags(term: string) {
+    static async buscarTags(term: string) {
         let data: SearchTagsEntrada = { term }
-        const response: SearchTagsSaida = Request.get('/searchtags', data)
+        const response: SearchTagsSaida = await Request.get('/searchtags', data)
         if (response.error) throw new ServerError(response.error)
         return response.data
     }
-    static buscarTodasAsTags() {
-        const response: GetAllTagsSaida = Request.get('/searchtags')
+    static async buscarTodasAsTags() {
+        const response: GetAllTagsSaida = await Request.get('/searchtags')
         if (response.error) throw new ServerError(response.error)
         return response.data.tags
     }

@@ -6,7 +6,7 @@ import {
     LogoffSaida
 } from './interfaces/auth'
 
-class LoginLocalData {
+export class LoginLocalData {
     static set email(value: string) {
         localStorage.setItem('email', JSON.stringify(value))
     }
@@ -27,16 +27,16 @@ class LoginLocalData {
     }
 }
 export class LoginRequest {
-    static fazerLogin(email: string, password: string) {
+    static async fazerLogin(email: string, password: string) {
         const data: LoginEntrada = { email, password }
-        const response: LoginSaida = Request.post('/login', data)
+        const response: LoginSaida = await Request.post('/login', data)
         if (response.error) throw new ServerError(response.error)
         return response.data
     }
-    static fazerLogout() {
+    static async fazerLogout() {
         const { email } = LoginLocalData
         const data: LogoffEntrada = { email }
-        const response: LogoffSaida = Request.post('/logoff', data)
+        const response: LogoffSaida = await Request.post('/logoff', data)
         if (response.error) throw new ServerError(response.error)
     }
 }
