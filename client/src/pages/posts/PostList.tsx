@@ -1,7 +1,41 @@
 import React, { Component, CSSProperties } from 'react'
 import { Button } from '../../componentes/Button'
 import { Input } from '../../componentes/Input'
-import Chip from '@material-ui/core/Chip'
+import { Post } from './Post'
+import { Post as PostDto } from '../../endpoints/interfaces/post'
+import { PostRequest } from '../../endpoints/PostRequest'
+import { ServerError } from '../../util/Request'
+
+const exemploDePosts = [
+    {
+        _id: '0xID',
+        title: 'Post Test 01',
+        content:
+            '#churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix',
+        likesNumber: 5,
+        authorName: 'Scalabresa'
+    },
+    {
+        _id: '0xID',
+        title: 'Post Test 02',
+        content:
+            '#churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix',
+        likesNumber: 15,
+        authorName: 'Scalabresa'
+    },
+    {
+        _id: '0xID',
+        title: 'Post Test 03',
+        content:
+            '#churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix #churras Proximo sabado 18/05 #enoix',
+        likesNumber: 15,
+        authorName: 'Scalabresa'
+    }
+]
+
+export function timeout(ms: number) {
+    return new Promise(r => setTimeout(r, ms))
+}
 
 const style: { [id: string]: CSSProperties } = {
     divDir: {
@@ -24,14 +58,55 @@ const style: { [id: string]: CSSProperties } = {
         justifyContent: 'center',
         alignItems: 'center',
         marginRight: '10px'
+    },
+    postsContainer: {
+        display: 'grid',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gridTemplateColumns: '95%',
+        gridGap: '30px',
+        padding: '10px'
     }
 }
 
 export class PostList extends Component {
+    static mainList?: PostList
+
+    static async refreshPostLists() {
+        if (PostList.mainList !== undefined) {
+            try {
+                const { tags } = PostList.mainList.state
+                const posts = exemploDePosts //PostRequest.buscarPosts(tags)
+                await timeout(2500 * Math.random())
+                PostList.mainList.setState({ posts })
+            } catch (error) {
+                if (error instanceof ServerError) {
+                    alert(error.message)
+                }
+            }
+        }
+    }
+    static filterByTag(tags: string[]) {
+        if (PostList.mainList !== undefined) {
+            PostList.mainList.setState({ tags })
+            PostList.refreshPostLists()
+        }
+    }
+
+    state = {
+        tags: [] as string[],
+        posts: [] as PostDto[]
+    }
+
+    componentDidMount() {
+        PostList.mainList = this
+        PostList.refreshPostLists()
+    }
     confirmarPost = (): void => {
         alert('Post Enviado')
     }
     render() {
+        const { posts } = this.state
         return (
             <div style={style.divDir}>
                 <div style={style.divMakePost}>
@@ -42,6 +117,13 @@ export class PostList extends Component {
                             onClick={this.confirmarPost}
                         />
                     </div>
+                </div>
+                <div style={style.postsContainer}>
+                    {posts.length === 0 ? (
+                        <div>Nenhum post por enquanto!</div>
+                    ) : (
+                        posts.map(p => <Post {...p} />)
+                    )}
                 </div>
             </div>
         )

@@ -2,9 +2,10 @@ import React, { Component, CSSProperties } from 'react'
 import { Header } from '../../componentes/Header'
 import { Button } from '../../componentes/Button'
 import { Input } from '../../componentes/Input'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { emailRegex } from '../../util/Patterns'
 import { LoginRequest } from '../../endpoints/LoginRequest'
+import { ServerError } from '../../util/Request'
 
 const style: { [id: string]: CSSProperties } = {
     loginBox: {
@@ -31,6 +32,7 @@ const style: { [id: string]: CSSProperties } = {
         textDecoration: 'none'
     }
 }
+
 export class Login extends Component {
     state = {
         email: '',
@@ -41,10 +43,16 @@ export class Login extends Component {
         if (email.match(emailRegex) === null) return alert('Email invalido')
         if (senha.length < 6)
             return alert('A senha precisa ter pelo menos 6 caracteres')
-
-        LoginRequest.fazerLogin(email, senha)
-
-        alert('Login feito com sucesso!')
+        try {
+            LoginRequest.fazerLogin(email, senha)
+            alert('Login feito com sucesso!')
+        } catch (error) {
+            if (error instanceof ServerError) {
+                alert(error.message)
+            } else {
+                alert('Erro inesperado!')
+            }
+        }
     }
     render() {
         return (

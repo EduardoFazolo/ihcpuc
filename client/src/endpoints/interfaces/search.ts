@@ -1,5 +1,17 @@
 import { ServerError } from './auth'
 
+//METHOD GET -> /getalltags
+/**
+ * Buscar todas as tags
+ */
+export interface GetAllTagsEntrada {}
+export interface GetAllTagsSaida {
+    error?: ServerError
+    data: {
+        tags: string[]
+    }
+}
+
 //METHOD GET -> /searchtags
 /**
  * Buscar tags com base no termo passado

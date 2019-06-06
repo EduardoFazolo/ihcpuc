@@ -31,12 +31,10 @@ export interface GetPostsFromTagsSaida {
         post: Post[]
     }
 }
-interface Post {
+export interface Post {
     _id: string
     title: string
     content: string
     likesNumber: number
-    author: {
-        name: string
-    }
+    authorName: string
 }

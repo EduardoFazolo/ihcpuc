@@ -7,7 +7,7 @@ export class Home extends Component {
     render() {
         return (
             <Router>
-                <Route path='/listaDePosts' component={PostHome} />
+                <Route path='/posts' component={PostHome} />
                 <Route path='/login' component={AuthHome} />
             </Router>
         )

@@ -1,5 +1,9 @@
 import { Request, ServerError } from '../util/Request'
-import { SearchTagsEntrada, SearchTagsSaida } from './interfaces/search'
+import {
+    SearchTagsEntrada,
+    SearchTagsSaida,
+    GetAllTagsSaida
+} from './interfaces/search'
 
 export class SearchRequest {
     static buscarTags(term: string) {
@@ -7,5 +11,10 @@ export class SearchRequest {
         const response: SearchTagsSaida = Request.get('/searchtags', data)
         if (response.error) throw new ServerError(response.error)
         return response.data
+    }
+    static buscarTodasAsTags() {
+        const response: GetAllTagsSaida = Request.get('/searchtags')
+        if (response.error) throw new ServerError(response.error)
+        return response.data.tags
     }
 }

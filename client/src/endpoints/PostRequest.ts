@@ -8,7 +8,7 @@ import {
     GetPostsFromTagsSaida
 } from './interfaces/post'
 
-export class SearchRequest {
+export class PostRequest {
     static criarPost(email: string, title: string, content: string) {
         let data: CreatePostEntrada = { email, title, content }
         const response: CreatePostSaida = Request.get('/createPost', data)
@@ -26,5 +26,6 @@ export class SearchRequest {
             data
         )
         if (response.error) throw new ServerError(response.error)
+        return response.data.post
     }
 }
