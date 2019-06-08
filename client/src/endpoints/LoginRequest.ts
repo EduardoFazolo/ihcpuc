@@ -1,6 +1,12 @@
-import { Request, Response, ServerError } from "../util/Request";
+import { Request, ServerError } from '../util/Request'
+import {
+    LoginEntrada,
+    LoginSaida,
+    LogoffEntrada,
+    LogoffSaida
+} from './interfaces/auth'
 
-class LoginLocalData {
+export class LoginLocalData {
     static set email(value: string) {
         localStorage.setItem('email', JSON.stringify(value))
     }
@@ -19,22 +25,18 @@ class LoginLocalData {
     static get nomeCompleto() {
         return JSON.stringify(localStorage.getItem('nomeCompleto') || '""')
     }
-
 }
 export class LoginRequest {
-    static fazerLogin(email: string, senha: string) {
-        const data = { email, senha }
-        const response: Response = Request.post('', data)
-        if (response.erro)
-            throw new ServerError(response.erro)
-        return response
+    static async fazerLogin(email: string, password: string) {
+        const data: LoginEntrada = { email, password }
+        const response: LoginSaida = await Request.post('/login', data)
+        if (response.error) throw new ServerError(response.error)
+        return response.data
     }
-    static fazerLogout() {
+    static async fazerLogout() {
         const { email } = LoginLocalData
-        const data = { email }
-        const response: Response = Request.post('', data)
-        if (response.erro)
-            throw new ServerError(response.erro)
-        return response
+        const data: LogoffEntrada = { email }
+        const response: LogoffSaida = await Request.post('/logoff', data)
+        if (response.error) throw new ServerError(response.error)
     }
 }

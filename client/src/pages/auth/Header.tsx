@@ -1,5 +1,5 @@
 import React, { CSSProperties, Component } from 'react'
-import PUCPRLogo from '../images/pucpr.webp'
+import PUCPRLogo from '../../images/pucpr.webp'
 
 const style: { [id: string]: CSSProperties } = {
     header: {
@@ -18,11 +18,11 @@ const style: { [id: string]: CSSProperties } = {
         top: '2px',
         width: 'calc(100% - 200px)',
         fontSize: '34px',
-        margin: '0px',
+        margin: '0px'
     },
     logo: {
         margin: '20px',
-        width: '160px',
+        width: '160px'
     }
 }
 interface Props {
@@ -31,9 +31,11 @@ interface Props {
 export class Header extends Component<Props> {
     render() {
         const { title } = this.props
-        return <div style={style.header}>
-            <img style={style.logo} src={PUCPRLogo} alt={"xd"}/>
-            <p style={style.title} > {title}</p>
-        </div>
+        return (
+            <div style={style.header}>
+                <img style={style.logo} src={PUCPRLogo} alt={'xd'} />
+                <p style={style.title}> {title}</p>
+            </div>
+        )
     }
 }
