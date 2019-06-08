@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express();
 const bodyparser = require('body-parser')
-const login = require('../functions/login')
+const login = require('../functions/user_auth/login')
 const mongoose = require('mongoose')
 
 app.use(bodyparser.json());

@@ -1,5 +1,4 @@
-const User = require('../models/user')
-const errortype = require('../helpers/erros')
+const User = require('../../models/user')
 
 async function logoff(_email){
 
@@ -9,7 +8,6 @@ async function logoff(_email){
 
     curr_login.logged = false;
     await curr_login.save();
-
 
 }
 

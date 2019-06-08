@@ -1,5 +1,5 @@
-const User = require('../models/user')
-const errortype = require('../helpers/erros')
+const User = require('../../models/user')
+const errortype = require('../../helpers/erros')
 
 async function change_password(email, old_password, new_password, confirm_password){
     

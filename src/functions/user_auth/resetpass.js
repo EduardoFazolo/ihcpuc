@@ -1,5 +1,5 @@
-const User = require('../models/user')
-const errortype = require('../helpers/erros')
+const User = require('../../models/user')
+const errortype = require('../../helpers/erros')
 const nodemailer = require('nodemailer')
 const generator = require('generate-password')
 
