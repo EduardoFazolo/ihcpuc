@@ -2,9 +2,9 @@ import React, { Component, CSSProperties } from 'react'
 import { Header } from './Header'
 import { Button } from '../../componentes/Button'
 import { Input } from '../../componentes/Input'
-import { Link, withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { emailRegex } from '../../util/Patterns'
-import { LoginRequest } from '../../endpoints/LoginRequest'
+import { LoginRequest, LoginLocalData } from '../../endpoints/LoginRequest'
 import { ServerError } from '../../util/Request'
 
 const style: { [id: string]: CSSProperties } = {
@@ -38,13 +38,21 @@ export class Login extends Component {
         email: '',
         senha: ''
     }
-    fazerLogin = (): void => {
+    fazerLogin = async () => {
         const { email, senha } = this.state
-        if (email.match(emailRegex) === null) return alert('Email invalido')
-        if (senha.length < 6)
-            return alert('A senha precisa ter pelo menos 6 caracteres')
+        if (email.match(emailRegex) === null) {
+            alert('Email invalido')
+            return
+        }
+        if (senha.length < 6) {
+            alert('A senha precisa ter pelo menos 6 caracteres')
+            return
+        }
         try {
-            LoginRequest.fazerLogin(email, senha)
+            const response = { name: '' } //await LoginRequest.fazerLogin(email, senha)
+            LoginLocalData.email = email
+            LoginLocalData.senha = senha
+            LoginLocalData.nomeCompleto = response.name
             window.open('posts', '_self')
         } catch (error) {
             if (error instanceof ServerError) {

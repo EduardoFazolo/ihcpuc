@@ -19,7 +19,6 @@ const tagsExemplos = [
 const style: { [id: string]: CSSProperties } = {
     container: {
         height: '100%',
-        backgroundColor: '#6F2232',
         width: '400px',
         display: 'flex',
         alignItems: 'center',
@@ -87,7 +86,7 @@ export class TagFinder extends Component {
             <div style={style.container}>
                 <div style={style.tagFinder}>
                     <div style={style.content}>
-                        <div style={style.title}>Tags:</div>
+                        <div style={style.title}>Tags</div>
                         <Input
                             label='Filtro'
                             onChange={e =>

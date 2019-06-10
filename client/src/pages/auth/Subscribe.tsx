@@ -46,13 +46,26 @@ export class Cadastro extends Component {
     }
     enviarCadastro = (): void => {
         const { nome, sobreNome, email, senha1, senha2 } = this.state
-        if (nome.match(nomeRegex) === null) return alert('Nome invalido')
-        if (sobreNome.match(nomeRegex) === null)
-            return alert('Sobrenome invalido')
-        if (email.match(emailRegex) === null) return alert('Email invalido')
-        if (senha1.length < 6)
-            return alert('A senha precisa ter pelo menos 6 caracteres')
-        if (senha1 !== senha2) return alert('As senhas não conferem')
+        if (nome.match(nomeRegex) === null) {
+            alert('Nome invalido')
+            return
+        }
+        if (sobreNome.match(nomeRegex) === null) {
+            alert('Sobrenome invalido')
+            return
+        }
+        if (email.match(emailRegex) === null) {
+            alert('Email invalido')
+            return
+        }
+        if (senha1.length < 6) {
+            alert('A senha precisa ter pelo menos 6 caracteres')
+            return
+        }
+        if (senha1 !== senha2) {
+            alert('As senhas não conferem')
+            return
+        }
         CadastroRequest.fazerCadastro(nome, sobreNome, email, senha1)
         alert('Cadastro concluído com sucesso!')
         window.open('login', '_self')

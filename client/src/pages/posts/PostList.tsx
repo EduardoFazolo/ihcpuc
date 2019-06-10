@@ -61,7 +61,6 @@ export function timeout(ms: number) {
 
 const style: { [id: string]: CSSProperties } = {
     divDir: {
-        backgroundColor: '#6F2232',
         width: '100%',
         height: '100%',
         display: 'flex',
