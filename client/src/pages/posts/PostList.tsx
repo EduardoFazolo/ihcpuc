@@ -135,7 +135,7 @@ export class PostList extends Component {
                     {posts.length === 0 ? (
                         <div>Nenhum post por enquanto!</div>
                     ) : (
-                        posts.map(p => <Post {...p} />)
+                        posts.map((p, i) => <Post key={i} {...p} />)
                     )}
                 </div>
             </div>

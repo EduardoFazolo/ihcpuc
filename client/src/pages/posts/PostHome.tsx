@@ -2,6 +2,7 @@ import React, { Component, CSSProperties } from 'react'
 import { TagFinder } from './TagFinder'
 import { PostList } from './PostList'
 import { Header } from './Header'
+import { LoginLocalData } from '../../endpoints/LoginRequest'
 
 const style: { [id: string]: CSSProperties } = {
     superContainer: {
@@ -21,6 +22,10 @@ const style: { [id: string]: CSSProperties } = {
 }
 
 export class PostHome extends Component {
+    componentDidMount() {
+        console.log(LoginLocalData.email)
+        if (LoginLocalData.email === null) window.open('login', '_self')
+    }
     render() {
         return (
             <div style={style.superContainer}>

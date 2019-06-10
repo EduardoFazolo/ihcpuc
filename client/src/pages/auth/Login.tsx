@@ -45,7 +45,7 @@ export class Login extends Component {
             return alert('A senha precisa ter pelo menos 6 caracteres')
         try {
             LoginRequest.fazerLogin(email, senha)
-            alert('Login feito com sucesso!')
+            window.open('posts', '_self')
         } catch (error) {
             if (error instanceof ServerError) {
                 alert(error.message)

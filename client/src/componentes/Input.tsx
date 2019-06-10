@@ -35,7 +35,13 @@ export interface Props extends WithStyles<typeof styles> {
 }
 class CustomizedInputs extends Component<Props> {
     render() {
-        const { classes, label, type, onChange, lines } = this.props
+        const {
+            classes,
+            label,
+            type = 'text',
+            onChange,
+            lines = 1
+        } = this.props
         return (
             <div style={{ width: '100%' }}>
                 <TextField
@@ -56,11 +62,11 @@ class CustomizedInputs extends Component<Props> {
                     label={label}
                     variant='outlined'
                     id='custom-css-outlined-input'
-                    type={type || 'text'}
+                    type={type}
                     style={{ width: 'calc(100% - 15px)' }}
                     onChange={onChange}
-                    multiline
-                    rows={lines || 1}
+                    multiline={lines > 1}
+                    rows={lines}
                 />
             </div>
         )

@@ -25,7 +25,7 @@ const style: { [id: string]: CSSProperties } = {
         alignItems: 'center',
         justifyContent: 'center'
     },
-    TagFinder: {
+    tagFinder: {
         backgroundColor: 'white',
         height: 'calc(100% - 35px)',
         width: 'calc(100% - 35px)',
@@ -85,10 +85,15 @@ export class TagFinder extends Component {
     render() {
         return (
             <div style={style.container}>
-                <div style={style.TagFinder}>
+                <div style={style.tagFinder}>
                     <div style={style.content}>
                         <div style={style.title}>Tags:</div>
-                        <Input label='Filtro' />
+                        <Input
+                            label='Filtro'
+                            onChange={e =>
+                                this.setState({ term: e.target.value })
+                            }
+                        />
                         {this.renderTags()}
                     </div>
                 </div>

@@ -9,7 +9,7 @@ app.post('/createPost', async (request, response) => {
         response.send({})
     } catch (error) {
         response.send({
-            error: error.toJSON()
+            error: JSON.stringify(error)
         })
     }
 })
@@ -23,7 +23,7 @@ app.post('/likepost', async (request, response) => {
         response.send({})
     } catch (error) {
         response.send({
-            error: error.toJSON()
+            error: JSON.stringify(error)
         })
     }
 })
@@ -41,7 +41,7 @@ app.get('/getpostswithtag', async (request, response) => {
         })
     } catch (error) {
         response.send({
-            error: error.toJSON()
+            error: JSON.stringify(error)
         })
     }
 })

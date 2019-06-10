@@ -13,7 +13,7 @@ app.post('/login', async (request, response) => {
         })
     } catch (error) {
         response.send({
-            error: error.toJSON()
+            error: JSON.stringify(error)
         })
     }
 })
@@ -27,7 +27,7 @@ app.post('/logoff', async (request, response) => {
         response.send({})
     } catch (error) {
         response.send({
-            error: error.toJSON()
+            error: JSON.stringify(error)
         })
     }
 })
@@ -41,7 +41,7 @@ app.post('/subscribe', async (request, response) => {
         response.send({})
     } catch (error) {
         response.send({
-            error: error.toJSON()
+            error: JSON.stringify(error)
         })
     }
 })
@@ -57,7 +57,7 @@ app.post('/forgotpassword', async (request, response) => {
         })
     } catch (error) {
         response.send({
-            error: error.toJSON()
+            error: JSON.stringify(error)
         })
     }
 })
@@ -73,7 +73,7 @@ app.post('/changepassword', async (request, response) => {
         })
     } catch (error) {
         response.send({
-            error: error.toJSON()
+            error: JSON.stringify(error)
         })
     }
 })

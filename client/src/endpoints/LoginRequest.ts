@@ -11,7 +11,7 @@ export class LoginLocalData {
         localStorage.setItem('email', JSON.stringify(value))
     }
     static get email() {
-        return JSON.stringify(localStorage.getItem('email') || '""')
+        return JSON.stringify(localStorage.getItem('email'))
     }
     static set senha(value: string) {
         localStorage.setItem('senha', JSON.stringify(value))
