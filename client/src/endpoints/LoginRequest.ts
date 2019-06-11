@@ -6,24 +6,31 @@ import {
     LogoffSaida
 } from './interfaces/auth'
 
+function getLocalStorageData(propertyId: string) {
+    return JSON.parse(localStorage.getItem(propertyId) || '""')
+}
+function setLocalStorageData(propertyId: string, value: any) {
+    localStorage.setItem(propertyId, JSON.stringify(value))
+}
+
 export class LoginLocalData {
     static set email(value: string) {
-        localStorage.setItem('email', JSON.stringify(value))
+        setLocalStorageData('email', value)
     }
     static get email() {
-        return JSON.stringify(localStorage.getItem('email') || '""')
+        return getLocalStorageData('email')
     }
     static set senha(value: string) {
-        localStorage.setItem('senha', JSON.stringify(value))
+        setLocalStorageData('senha', value)
     }
     static get senha() {
-        return JSON.stringify(localStorage.getItem('senha') || '""')
+        return getLocalStorageData('senha')
     }
     static set nomeCompleto(value: string) {
-        localStorage.setItem('nomeCompleto', JSON.stringify(value))
+        setLocalStorageData('nomeCompleto', value)
     }
     static get nomeCompleto() {
-        return JSON.stringify(localStorage.getItem('nomeCompleto') || '""')
+        return getLocalStorageData('nomeCompleto')
     }
 }
 export class LoginRequest {

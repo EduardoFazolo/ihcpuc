@@ -7,7 +7,15 @@ export class Request {
         return reponse.json()
     }
     static async post(path: string, data: any): Promise<any> {
-        return {}
+        const request = await fetch(path, {
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify(data)
+        })
+        return await request.json()
     }
 }
 export class ServerError extends Error {

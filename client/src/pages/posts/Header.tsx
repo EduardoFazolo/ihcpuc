@@ -1,20 +1,17 @@
 import React, { CSSProperties, Component } from 'react'
 import PUCPRLogo from '../../images/pucpr.webp'
+import { Logoff } from './Logoff'
 
 const style: { [id: string]: CSSProperties } = {
     container: {
-        backgroundColor: '#6F2232',
+        height: '80px',
         color: 'white',
+
         display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '80px'
+        justifyContent: 'space-between',
+        alignItems: 'center'
     },
     title: {
-        textAlign: 'center',
-        position: 'relative',
-        top: '2px',
-        width: 'calc(100% - 200px)',
         fontSize: '34px',
         margin: '0px'
     },
@@ -32,7 +29,8 @@ export class Header extends Component<Props> {
         return (
             <div style={style.container}>
                 <img style={style.logo} src={PUCPRLogo} alt={'xd'} />
-                <p style={style.title}> {title}</p>
+                <div style={style.title}> {title}</div>
+                <Logoff />
             </div>
         )
     }

@@ -39,7 +39,10 @@ export class EsqueciSenha extends Component {
     }
     alterarSenha = (): void => {
         const { email } = this.state
-        if (email.match(emailRegex) === null) return alert('Email invalido')
+        if (email.match(emailRegex) === null) {
+            alert('Email invalido')
+            return
+        }
         alert('Senha enviada para o email: ' + email)
     }
     render() {
@@ -60,7 +63,10 @@ export class EsqueciSenha extends Component {
                     />
                     <div style={style.btnContainer}>
                         <Button label='Voltar' path='login' />
-                        <Button label='Confirmar' onClick={this.alterarSenha} />
+                        <Button
+                            label='Confirmar'
+                            onClick={() => this.alterarSenha()}
+                        />
                     </div>
                 </div>
             </div>

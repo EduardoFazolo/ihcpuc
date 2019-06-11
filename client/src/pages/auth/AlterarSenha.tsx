@@ -36,12 +36,20 @@ export class AlterarSenha extends Component {
         senha1: '',
         senha2: ''
     }
-    alterarSenha = (): void => {
+    async alterarSenha() {
         const { email, senha_antiga, senha1, senha2 } = this.state
-        if (email.match(emailRegex) === null) return alert('Email invalido')
-        if (senha_antiga.length < 6)
-            return alert('A senha precisa ter pelo menos 6 caracteres')
-        if (senha1 !== senha2) return alert('As senhas não conferem')
+        if (email.match(emailRegex) === null) {
+            alert('Email invalido')
+            return
+        }
+        if (senha_antiga.length < 6) {
+            alert('A senha precisa ter pelo menos 6 caracteres')
+            return
+        }
+        if (senha1 !== senha2) {
+            alert('As senhas não conferem')
+            return
+        }
         alert('Senha alterada com sucesso!')
     }
     render() {
@@ -79,7 +87,10 @@ export class AlterarSenha extends Component {
                     />
                     <div style={style.btnContainer}>
                         <Button label='Voltar' path='login' />
-                        <Button label='Confirmar' onClick={this.alterarSenha} />
+                        <Button
+                            label='Confirmar'
+                            onClick={() => this.alterarSenha()}
+                        />
                     </div>
                 </div>
             </div>

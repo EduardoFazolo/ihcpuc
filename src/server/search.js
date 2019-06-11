@@ -11,7 +11,7 @@ app.get('/getalltags', async (request, response) => {
         })
     } catch (error) {
         response.send({
-            error: error.toJSON()
+            error: JSON.stringify(error)
         })
     }
 })
@@ -29,7 +29,7 @@ app.get('/searchtags', async (request, response) => {
         })
     } catch (error) {
         response.send({
-            error: error.toJSON()
+            error: JSON.stringify(error)
         })
     }
 })

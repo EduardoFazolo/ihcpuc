@@ -19,13 +19,12 @@ const tagsExemplos = [
 const style: { [id: string]: CSSProperties } = {
     container: {
         height: '100%',
-        backgroundColor: '#6F2232',
         width: '400px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'
     },
-    TagFinder: {
+    tagFinder: {
         backgroundColor: 'white',
         height: 'calc(100% - 35px)',
         width: 'calc(100% - 35px)',
@@ -85,10 +84,15 @@ export class TagFinder extends Component {
     render() {
         return (
             <div style={style.container}>
-                <div style={style.TagFinder}>
+                <div style={style.tagFinder}>
                     <div style={style.content}>
-                        <div style={style.title}>Tags:</div>
-                        <Input label='Filtro' />
+                        <div style={style.title}>Tags</div>
+                        <Input
+                            label='Filtro'
+                            onChange={e =>
+                                this.setState({ term: e.target.value })
+                            }
+                        />
                         {this.renderTags()}
                     </div>
                 </div>

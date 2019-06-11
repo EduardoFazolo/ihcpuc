@@ -61,7 +61,6 @@ export function timeout(ms: number) {
 
 const style: { [id: string]: CSSProperties } = {
     divDir: {
-        backgroundColor: '#6F2232',
         width: '100%',
         height: '100%',
         display: 'flex',
@@ -135,7 +134,7 @@ export class PostList extends Component {
                     {posts.length === 0 ? (
                         <div>Nenhum post por enquanto!</div>
                     ) : (
-                        posts.map(p => <Post {...p} />)
+                        posts.map((p, i) => <Post key={i} {...p} />)
                     )}
                 </div>
             </div>
