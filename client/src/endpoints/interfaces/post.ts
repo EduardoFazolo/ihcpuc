@@ -16,6 +16,7 @@ export interface LikePostEntrada {
 }
 export interface LikePostSaida {
     error?: ServerError
+    likesNumber: number
 }
 
 //METHOD GET -> /getpostsfromtags

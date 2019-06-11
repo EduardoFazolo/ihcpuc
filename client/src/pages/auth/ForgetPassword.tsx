@@ -63,7 +63,10 @@ export class EsqueciSenha extends Component {
                     />
                     <div style={style.btnContainer}>
                         <Button label='Voltar' path='login' />
-                        <Button label='Confirmar' onClick={this.alterarSenha} />
+                        <Button
+                            label='Confirmar'
+                            onClick={() => this.alterarSenha()}
+                        />
                     </div>
                 </div>
             </div>

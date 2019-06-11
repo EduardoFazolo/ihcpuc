@@ -47,7 +47,7 @@ export class EditPost extends Component<PostDto> {
         title: '',
         content: ''
     }
-    enviarPost = async () => {
+    async enviarPost() {
         try {
             const { title, content } = this.state
             PostRequest.criarPost(title, content)
@@ -79,7 +79,7 @@ export class EditPost extends Component<PostDto> {
                                 {' '}
                                 <Button
                                     label='Enviar'
-                                    onClick={this.enviarPost}
+                                    onClick={() => this.enviarPost()}
                                 />{' '}
                             </div>
                         </div>

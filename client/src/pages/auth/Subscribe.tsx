@@ -44,7 +44,7 @@ export class Cadastro extends Component {
         senha1: '',
         senha2: ''
     }
-    enviarCadastro = (): void => {
+    async enviarCadastro() {
         const { nome, sobreNome, email, senha1, senha2 } = this.state
         if (nome.match(nomeRegex) === null) {
             alert('Nome invalido')
@@ -117,7 +117,10 @@ export class Cadastro extends Component {
                 </div>
                 <div style={style.row}>
                     <Button label='Voltar' path='login' />
-                    <Button label='Enviar' onClick={this.enviarCadastro} />
+                    <Button
+                        label='Enviar'
+                        onClick={() => this.enviarCadastro()}
+                    />
                 </div>
             </div>
         )

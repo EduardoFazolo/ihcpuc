@@ -20,7 +20,7 @@ app.post('/likepost', async (request, response) => {
 
         // dar like no post
 
-        response.send({})
+        response.send({ likesNumber })
     } catch (error) {
         response.send({
             error: JSON.stringify(error)

@@ -42,18 +42,27 @@ const style: { [id: string]: CSSProperties } = {
 }
 
 export class Post extends Component<PostDto> {
+    state = {
+        likesNumber: this.props.likesNumber
+    }
     async darLike() {
         try {
             const { _id } = this.props
-            await PostRequest.likePost(_id)
+            const { likesNumber } = await PostRequest.likePost(_id)
+            this.setState({ likesNumber })
         } catch (error) {
             if (error instanceof ServerError) {
                 alert(error.message)
+            } else {
+                alert('Erro inesperado!')
             }
         }
     }
     render() {
-        const { title, content, likesNumber, authorName } = this.props
+        const { title, content, authorName } = this.props
+        const { likesNumber } = this.state
+        const likesLabel =
+            likesNumber === 1 ? 'like nesse post' : 'likes nesse post'
         return (
             <div style={style.container}>
                 <div style={style.subContainer}>
@@ -63,13 +72,14 @@ export class Post extends Component<PostDto> {
                             <div>{authorName}</div>
                         </div>
                         <div style={style.bottomBar}>
-                            <div>{likesNumber} likes nesse post</div>
+                            <div>
+                                {likesNumber} {likesLabel}
+                            </div>
                             <div style={{ width: '100px' }}>
-                                {' '}
                                 <Button
                                     label='like'
-                                    onClick={this.darLike}
-                                />{' '}
+                                    onClick={() => this.darLike()}
+                                />
                             </div>
                         </div>
                     </div>

@@ -40,7 +40,10 @@ export class Logoff extends Component {
             <div style={style.container}>
                 Logado como {target}
                 <div style={style.btnLogoff}>
-                    <Button label='Desconectar' onClick={this.fazerLogoff} />
+                    <Button
+                        label='Desconectar'
+                        onClick={() => this.fazerLogoff()}
+                    />
                 </div>
             </div>
         )

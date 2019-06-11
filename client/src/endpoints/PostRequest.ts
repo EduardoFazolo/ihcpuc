@@ -23,6 +23,7 @@ export class PostRequest {
         let data: LikePostEntrada = { postId }
         const response: LikePostSaida = await Request.post('/likepost', data)
         if (response.error) throw new ServerError(response.error)
+        return response
     }
     static async buscarPosts(tags: string[]) {
         let data: GetPostsFromTagsEntrada = { tags }

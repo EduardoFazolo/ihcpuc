@@ -38,7 +38,7 @@ export class Login extends Component {
         email: '',
         senha: ''
     }
-    fazerLogin = async () => {
+    async fazerLogin() {
         const { email, senha } = this.state
         if (email.match(emailRegex) === null) {
             alert('Email invalido')
@@ -83,7 +83,10 @@ export class Login extends Component {
                     />
                     <div style={style.btnContainer}>
                         <Button label='Cadastrar' path='cadastro' />
-                        <Button label='Login' onClick={this.fazerLogin} />
+                        <Button
+                            label='Login'
+                            onClick={() => this.fazerLogin()}
+                        />
                     </div>
                     <div style={style.linkContainer}>
                         <Link to='/esquecisenha'>Esqueci minha senha</Link>

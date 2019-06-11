@@ -36,7 +36,7 @@ export class AlterarSenha extends Component {
         senha1: '',
         senha2: ''
     }
-    alterarSenha = (): void => {
+    async alterarSenha() {
         const { email, senha_antiga, senha1, senha2 } = this.state
         if (email.match(emailRegex) === null) {
             alert('Email invalido')
@@ -87,7 +87,10 @@ export class AlterarSenha extends Component {
                     />
                     <div style={style.btnContainer}>
                         <Button label='Voltar' path='login' />
-                        <Button label='Confirmar' onClick={this.alterarSenha} />
+                        <Button
+                            label='Confirmar'
+                            onClick={() => this.alterarSenha()}
+                        />
                     </div>
                 </div>
             </div>
