@@ -18,12 +18,13 @@ const style: { [id: string]: CSSProperties } = {
     }
 }
 export class Logoff extends Component {
-    fazerLogoff() {
+    async fazerLogoff() {
         try {
-            LoginRequest.fazerLogout()
+            await LoginRequest.fazerLogout()
             LoginLocalData.email = ''
             LoginLocalData.nomeCompleto = ''
             LoginLocalData.senha = ''
+            window.open('/login', '_self')
         } catch (error) {
             if (error instanceof ServerError) {
                 alert(error.message)

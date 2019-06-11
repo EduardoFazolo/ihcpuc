@@ -23,19 +23,11 @@ const style: { [id: string]: CSSProperties } = {
 }
 
 export class PostHome extends Component {
-    verificarSeEstaLogado() {
-        const { nomeCompleto, email } = LoginLocalData
-        const target = nomeCompleto || email
-        if (target === '') {
-            window.open('login', '_self')
-        }
-    }
     render() {
-        this.verificarSeEstaLogado()
         return (
             <div style={style.superContainer}>
                 <div style={style.container}>
-                    <Header title='Forum da PUC' />
+                    <Header title='eVOX' />
                     <div style={style.content}>
                         <TagFinder />
                         <PostList />

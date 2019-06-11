@@ -35,7 +35,8 @@ const style: { [id: string]: CSSProperties } = {
     },
     title: {
         fontSize: '40px',
-        fontWeight: 500
+        fontWeight: 500,
+        textAlign: 'center'
     },
     content: {
         height: 'calc(100% - 30px)',
@@ -52,7 +53,6 @@ export class TagFinder extends Component {
     async componentDidMount() {
         try {
             const tags = tagsExemplos //SearchRequest.buscarTodasAsTags()
-            await timeout(2500 * Math.random())
             this.setState({ tags })
         } catch (error) {
             if (error instanceof ServerError) {
@@ -69,7 +69,9 @@ export class TagFinder extends Component {
             return <div>Nenhuma tag por enquanto!</div>
         }
         const filteredTags =
-            term === '' ? tags : tags.filter(t => t.match(term))
+            term === ''
+                ? tags
+                : tags.filter(t => t.toLowerCase().match(term.toLowerCase()))
 
         return filteredTags.map((t, i) => (
             <Chip
@@ -88,7 +90,7 @@ export class TagFinder extends Component {
                     <div style={style.content}>
                         <div style={style.title}>Tags</div>
                         <Input
-                            label='Filtro'
+                            label='Buscar'
                             onChange={e =>
                                 this.setState({ term: e.target.value })
                             }
