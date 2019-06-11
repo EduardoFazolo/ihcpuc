@@ -1,5 +1,5 @@
 class ServerError extends Error {
-    id = 0
+    
 
     toJSON() {
         return {
@@ -40,6 +40,3 @@ module.exports.InvalidPassConfirmation = class InvalidPassConfirmation extends S
     }
 }
 
-class MyError extends ServerError {
-    id = -505
-}
