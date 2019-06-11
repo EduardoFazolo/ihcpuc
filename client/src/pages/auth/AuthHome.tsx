@@ -5,6 +5,7 @@ import { Cadastro } from './Subscribe'
 import { AlterarSenha } from './AlterarSenha'
 import { EsqueciSenha } from './ForgetPassword'
 import Background from '../../images/background.jpeg'
+import { LoginLocalData } from '../../endpoints/LoginRequest'
 
 const style: { [id: string]: CSSProperties } = {
     container: {
@@ -21,7 +22,15 @@ const style: { [id: string]: CSSProperties } = {
     }
 }
 export class AuthHome extends Component {
+    verificarSeEstaLogado() {
+        const { nomeCompleto, email } = LoginLocalData
+        const target = nomeCompleto || email
+        if (target !== '') {
+            window.open('posts', '_self')
+        }
+    }
     render() {
+        this.verificarSeEstaLogado()
         return (
             <div style={style.container}>
                 <div style={style.content}>

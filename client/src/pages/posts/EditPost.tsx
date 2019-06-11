@@ -5,6 +5,7 @@ import { ServerError } from '../../util/Request'
 import { LoginRequest } from '../../endpoints/LoginRequest'
 import { PostRequest } from '../../endpoints/PostRequest'
 import { Input } from '../../componentes/Input'
+import { PostList } from './PostList'
 
 const style: { [id: string]: CSSProperties } = {
     container: {
@@ -50,12 +51,13 @@ export class EditPost extends Component<PostDto> {
     async enviarPost() {
         try {
             const { title, content } = this.state
-            PostRequest.criarPost(title, content)
+            await PostRequest.criarPost(title, content)
+            PostList.refreshPostLists()
         } catch (error) {
             if (error instanceof ServerError) {
                 alert(error.message)
             } else {
-                alert('Erro inesperado@')
+                alert('Erro inesperado!')
             }
         }
     }
