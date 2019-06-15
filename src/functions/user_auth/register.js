@@ -6,7 +6,7 @@ function validateEmail(email) {
     return email.match(re) != null
 }
 
-async function register_newUser(name, email, password){
+async function register_newUser(name, lastName, email, password){
 
 
     try{
@@ -15,12 +15,13 @@ async function register_newUser(name, email, password){
         }
 
         let newUser = new User({
-            name:name,
+            name:name + ' ' + lastName,
             email:email,
             password:password,
             logged:false
         });
 
+        console.log('deu bom aqui');
         await newUser.save();
 
     }
@@ -37,4 +38,4 @@ async function register_newUser(name, email, password){
     }
 }
 
-module.exports = register_newUser
+module.exports.register_newUser = register_newUser

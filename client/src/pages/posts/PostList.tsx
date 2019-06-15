@@ -59,6 +59,13 @@ export function timeout(ms: number) {
     return new Promise(r => setTimeout(r, ms))
 }
 
+/*
+paleta:
+post: e04053
+fundo: f4f2f2
+    434343
+*/
+
 const style: { [id: string]: CSSProperties } = {
     divDir: {
         width: '100%',
@@ -93,9 +100,9 @@ export class PostList extends Component {
     static async refreshPostLists() {
         if (PostList.mainList !== undefined) {
             try {
-                const { tags } = PostList.mainList.state
-                const posts = exemploDePosts //PostRequest.buscarPosts(tags)
-                await timeout(2500 * Math.random())
+                debugger
+                // const { tags } = PostList.mainList.state
+                const posts = await PostRequest.buscarPosts([])//tags)
                 PostList.mainList.setState({ posts })
             } catch (error) {
                 if (error instanceof ServerError) {

@@ -14,13 +14,13 @@ const styles = (theme: Theme) =>
         },
         cssLabel: {
             '&$cssFocused': {
-                color: 'gray'
+                color: 'white'
             }
         },
         cssFocused: {},
         cssOutlinedInput: {
             '&$cssFocused $notchedOutline': {
-                borderColor: '#d3d3d3'
+                borderColor: 'white'
             }
         },
         notchedOutline: {}
@@ -43,7 +43,7 @@ class CustomizedInputs extends Component<Props> {
             lines = 1
         } = this.props
         return (
-            <div style={{ width: '100%' }}>
+            <div style={{ width: '100%'}}>
                 <TextField
                     className={classes.margin}
                     InputLabelProps={{
@@ -63,7 +63,7 @@ class CustomizedInputs extends Component<Props> {
                     variant='outlined'
                     id='custom-css-outlined-input'
                     type={type}
-                    style={{ width: 'calc(100% - 15px)' }}
+                    style={{ width: 'calc(100% - 15px)'}}
                     onChange={onChange}
                     multiline={lines > 1}
                     rows={lines}

@@ -22,4 +22,4 @@ async function login(_email, password){
 
 }
 
-module.exports = login
+module.exports.login = login

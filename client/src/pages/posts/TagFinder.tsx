@@ -25,7 +25,7 @@ const style: { [id: string]: CSSProperties } = {
         justifyContent: 'center'
     },
     tagFinder: {
-        backgroundColor: 'white',
+        backgroundColor: '#912437',
         height: 'calc(100% - 35px)',
         width: 'calc(100% - 35px)',
         borderRadius: '10px',
@@ -35,6 +35,7 @@ const style: { [id: string]: CSSProperties } = {
     },
     title: {
         fontSize: '40px',
+        color:'white',
         fontWeight: 500,
         textAlign: 'center'
     },

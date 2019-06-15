@@ -10,6 +10,7 @@ import {
 import { LoginLocalData } from './LoginRequest'
 
 export class PostRequest {
+    
     static async criarPost(title: string, content: string) {
         const email = LoginLocalData.email
         let data: CreatePostEntrada = { email, title, content }
@@ -28,10 +29,11 @@ export class PostRequest {
     static async buscarPosts(tags: string[]) {
         let data: GetPostsFromTagsEntrada = { tags }
         const response: GetPostsFromTagsSaida = await Request.get(
-            '/getpostsfromtags',
+            '/getposts',
             data
         )
         if (response.error) throw new ServerError(response.error)
+        debugger
         return response.data.post
     }
 }

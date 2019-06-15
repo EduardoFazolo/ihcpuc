@@ -10,7 +10,7 @@ import { PostList } from './PostList'
 const style: { [id: string]: CSSProperties } = {
     container: {
         width: '90%',
-        backgroundColor: 'yellow',
+        backgroundColor: '#912437',
         borderRadius: '10px',
         boxShadow: '0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)',
         margin: '20px 0 20px 0'

@@ -21,13 +21,13 @@ body,
 }
 
 .activeOnHover {
-    opacity: 0.6;
-    transition: all 0.5s;
+    /*opacity: 0.6;
+    transition: all 0.5s;*/
 }
 
 .activeOnHover:hover,
 .activeOnHover:active {
-    opacity: 1;
+    /*opacity: 1;*/
 }
 
 /* width */

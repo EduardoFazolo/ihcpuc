@@ -11,4 +11,4 @@ async function logoff(_email){
 
 }
 
-module.exports = logoff
+module.exports.logoff = logoff

@@ -1,14 +1,22 @@
 const { app } = require('./main')
+const { change_password} = require('../functions/user_auth/changepass')
+const { reset_password } = require('../functions/user_auth/resetpass')
+const { logoff } = require('../functions/user_auth/logoff')
+const { login } = require('../functions/user_auth/login')
+const { register_newUser } = require('../functions/user_auth/register')
+const User = require('../models/user')
 
 app.post('/login', async (request, response) => {
     try {
         const { email, password } = request.body
 
         // fazer login
+        await login(email, password)
+        let user = await User.findOne({email:email}).exec();
 
         response.send({
             data: {
-                name
+                name: user.name
             }
         })
     } catch (error) {
@@ -23,6 +31,7 @@ app.post('/logoff', async (request, response) => {
         const { email } = request.body
 
         // fazer logoff
+        await logoff(email)
 
         response.send({})
     } catch (error) {
@@ -37,6 +46,7 @@ app.post('/subscribe', async (request, response) => {
         const { name, lastName, email, password } = request.body
 
         // fazer subscribe
+        await register_newUser(name, lastName, email, password)
 
         response.send({})
     } catch (error) {
@@ -51,9 +61,10 @@ app.post('/forgotpassword', async (request, response) => {
         const { email } = request.body
 
         // mandar a senha por email
+        await reset_password(email)
 
         response.send({
-            name
+            email
         })
     } catch (error) {
         response.send({
@@ -64,12 +75,17 @@ app.post('/forgotpassword', async (request, response) => {
 
 app.post('/changepassword', async (request, response) => {
     try {
-        const { email, password, newPassword } = request.body
+        const { email, password, newPassword, confirm_password } = request.body
 
         // change password
+        await change_password(email, password, newPassword, confirm_password)
 
         response.send({
-            name
+            data:{
+                email,
+                password,
+                newPassword
+            }
         })
     } catch (error) {
         response.send({

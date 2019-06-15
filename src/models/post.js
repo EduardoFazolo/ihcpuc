@@ -7,7 +7,7 @@ const PostSchema = new Schema({
     author:{type:Schema.Types.ObjectId, required:true},
     content:{type:String, required:true},
     tags:[String],
-    likeNumber:Number
+    likeList:[Schema.Types.ObjectId]
 
 });
 

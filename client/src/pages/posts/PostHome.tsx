@@ -4,9 +4,16 @@ import { PostList } from './PostList'
 import { Header } from './Header'
 import { LoginLocalData } from '../../endpoints/LoginRequest'
 
+/*
+paleta:
+post: e04053
+fundo: f4f2f2
+    434343
+*/
+
 const style: { [id: string]: CSSProperties } = {
     superContainer: {
-        backgroundColor: '#6F2232',
+        backgroundColor: '#f4f2f2',
         display: 'flex',
         justifyContent: 'center',
         height: '100%'

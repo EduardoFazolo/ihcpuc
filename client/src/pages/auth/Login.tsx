@@ -49,7 +49,7 @@ export class Login extends Component {
             return
         }
         try {
-            const response = { name: '' } //await LoginRequest.fazerLogin(email, senha)
+            const response = await LoginRequest.fazerLogin(email, senha)
             LoginLocalData.email = email
             LoginLocalData.senha = senha
             LoginLocalData.nomeCompleto = response.name

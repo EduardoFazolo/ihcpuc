@@ -3,6 +3,7 @@ import { Header } from './Header'
 import { Button } from '../../componentes/Button'
 import { Input } from '../../componentes/Input'
 import { emailRegex } from '../../util/Patterns'
+import { ServerError } from '../../util/Request';
 
 const style: { [id: string]: CSSProperties } = {
     loginBox: {
@@ -43,7 +44,17 @@ export class EsqueciSenha extends Component {
             alert('Email invalido')
             return
         }
-        alert('Senha enviada para o email: ' + email)
+        try{
+            alert('Senha enviada para o email: ' + email)
+        }
+        catch(error){
+            if(error instanceof ServerError){
+                alert(error.message)
+            }
+            else{
+                alert('Erro inesperado!')
+            }
+        }
     }
     render() {
         return (

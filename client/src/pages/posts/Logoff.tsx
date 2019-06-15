@@ -20,7 +20,7 @@ const style: { [id: string]: CSSProperties } = {
 export class Logoff extends Component {
     async fazerLogoff() {
         try {
-            await LoginRequest.fazerLogout()
+            await LoginRequest.fazerLogoff()
             LoginLocalData.email = ''
             LoginLocalData.nomeCompleto = ''
             LoginLocalData.senha = ''

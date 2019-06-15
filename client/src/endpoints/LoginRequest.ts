@@ -40,7 +40,7 @@ export class LoginRequest {
         if (response.error) throw new ServerError(response.error)
         return response.data
     }
-    static async fazerLogout() {
+    static async fazerLogoff() {
         const { email } = LoginLocalData
         const data: LogoffEntrada = { email }
         const response: LogoffSaida = await Request.post('/logoff', data)

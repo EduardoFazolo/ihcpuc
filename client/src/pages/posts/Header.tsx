@@ -6,6 +6,7 @@ const style: { [id: string]: CSSProperties } = {
     container: {
         height: '80px',
         color: 'white',
+        backgroundColor: '#912437',
 
         display: 'flex',
         justifyContent: 'space-between',

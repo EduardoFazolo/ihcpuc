@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const express = require('express')
 const bodyParser = require('body-parser')
 
-const mongoDB = 'mongodb://localhost:27017/myapp'
+const mongoDB = 'mongodb://localhost:27017/ihc'
 mongoose.connect(mongoDB, { useNewUrlParser: true })
 mongoose.Promise = global.Promise
 const db = mongoose.connection
@@ -25,10 +25,11 @@ require('./auth')
 require('./post')
 require('./search')
 
-app.get('*', (request, response) => {
-    response.sendFile(process.cwd() + '/client/build/index.html')
-})
+// app.get('*', (request, response) => {
+//     response.sendFile(process.cwd() + '/client/build/index.html')
+// })
 
 app.listen(porta, () => {
     console.log('Servidor rodando na porta ' + porta)
 })
+
