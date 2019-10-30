@@ -22,7 +22,7 @@
     "express": "^4.17.1",
     "generate-password": "^1.4.1",
     "mongodb": "^3.2.5",
-    "mongoose": "^5.5.10",
+    "mongoose": "^5.7.5",
     "nodemailer": "^6.2.1"
   }
 }
